@@ -6,7 +6,6 @@ nohup.out
 debug
 .happypack
 web/swagger/dist/swagger.*
-/models/
 /webAPIs/
 /log/*
 webConfig.json

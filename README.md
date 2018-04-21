@@ -1,6 +1,6 @@
 # goCoreCreateAppGeneration [a [GoCore Application](https://github.com/DanielRenne/GoCore/ "GoCore Application")]
 
-A Golang solution of tools for building a full stack web application.
+Describe the GoCore application elevator pitch purpose here.
 
 ## Setting up a development environment for this application ##
 

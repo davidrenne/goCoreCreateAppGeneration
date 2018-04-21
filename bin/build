@@ -1,0 +1,11 @@
+go install github.com/davidrenne/goCoreCreateAppGeneration
+cd $GOPATH/src/github.com/davidrenne/goCoreCreateAppGeneration/web/app/javascript
+bash build-gopher.sh
+cd $GOPATH/
+go build src/github.com/davidrenne/goCoreCreateAppGeneration/goCoreCreateAppGeneration.go
+whoami=$(whoami)
+if [[ "$whoami" == "root" ]]; then
+    goCoreCreateAppGeneration
+else
+    sudo goCoreCreateAppGeneration
+fi

@@ -1,0 +1,9 @@
+bash $GOPATH/src/github.com/davidrenne/goCoreCreateAppGeneration/bin/kill_all
+bash $GOPATH/src/github.com/davidrenne/goCoreCreateAppGeneration/bin/build_full
+cd $GOPATH
+whoami=$(whoami)
+if [[ "$whoami" == "root" ]]; then
+    goCoreCreateAppGeneration
+else
+    sudo goCoreCreateAppGeneration
+fi

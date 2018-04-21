@@ -7,6 +7,7 @@ import (
 
 	coreStore "github.com/DanielRenne/GoCore/core/store"
 	"github.com/davidrenne/goCoreCreateAppGeneration/br"
+	"github.com/davidrenne/goCoreCreateAppGeneration/sessionFunctions"
 	"github.com/davidrenne/goCoreCreateAppGeneration/constants"
 	"github.com/davidrenne/goCoreCreateAppGeneration/controllers"
 	"github.com/davidrenne/goCoreCreateAppGeneration/viewModel"

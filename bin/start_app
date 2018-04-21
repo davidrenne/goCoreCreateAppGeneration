@@ -37,7 +37,7 @@ echo "" > $GOPATH/src/github.com/davidrenne/goCoreCreateAppGeneration/log/db.log
 echo "" > /tmp/go_watch.log
 echo "" > $GOPATH/src/github.com/davidrenne/goCoreCreateAppGeneration/log/npm.log
 
-if [[ "$whoami" == "root" ]]; then
+if [[ "$whoami" == "root" ]] || [[ "$port" != "80" ]]; then
     rm $GOPATH/src/github.com/davidrenne/goCoreCreateAppGeneration/log/mongo.log
 else
     sudo rm $GOPATH/src/github.com/davidrenne/goCoreCreateAppGeneration/log/mongo.log

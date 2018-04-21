@@ -8,6 +8,14 @@ else
 fi
 bash $GOPATH/src/github.com/davidrenne/goCoreCreateAppGeneration/bin/kill_go_watch
 
+if [ ! -d "$GOPATH/src/github.com/DanielRenne/GoCore" ]; then
+    say "installing go core"
+    go get github.com/DanielRenne/GoCore/...
+    go install github.com/DanielRenne/GoCore/getCore
+    getCore
+    go install github.com/DanielRenne/GoCore/core/goCoreCreateApp
+fi
+
 if [ ! -f "$GOPATH/src/github.com/davidrenne/goCoreCreateAppGeneration/webConfig.json" ]; then
     say "Copying web config and npm install for first time development process"
     mkdir -p $GOPATH/src/github.com/davidrenne/goCoreCreateAppGeneration/log/plugins

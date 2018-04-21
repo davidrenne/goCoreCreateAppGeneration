@@ -19,10 +19,10 @@ bash $GOPATH/src/github.com/davidrenne/goCoreCreateAppGeneration/bin/kill_go_wat
 
 if [ ! -d "$GOPATH/src/github.com/DanielRenne/GoCore" ]; then
     say "installing go core"
-    go get github.com/DanielRenne/GoCore/...
-    go install github.com/DanielRenne/GoCore/getCore
-    getCore
-    go install github.com/DanielRenne/GoCore/core/goCoreCreateApp
+    go get github.com/DanielRenne/GoCore/... > /tmp/goCore1  2>&1
+    go install github.com/DanielRenne/GoCore/getCore > /tmp/goCore2  2>&1
+    getCore > /tmp/goCore3  2>&1
+    go install github.com/DanielRenne/GoCore/core/goCoreCreateApp > /tmp/goCore4  2>&1
 fi
 
 if [ ! -d "$GOPATH/src/github.com/davidrenne/goCoreCreateAppGeneration/web/app/node_modules" ]; then

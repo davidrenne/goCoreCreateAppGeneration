@@ -15,6 +15,7 @@ docker/dist
 /updates/latest
 .DS_Store
 .history
+web/app/node_modules
 *.vscode
 web/app/npm-debug.log*
 *.db

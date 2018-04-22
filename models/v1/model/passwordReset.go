@@ -575,6 +575,14 @@ func (obj *PasswordReset) ParseInterface(x interface{}) (err error) {
 func (obj modelPasswordResets) ReflectByFieldName(fieldName string, x interface{}) (value reflect.Value, err error) {
 
 	switch fieldName {
+	case "Url":
+		obj, ok := x.(string)
+		if !ok {
+			err = errors.New("Failed to typecast interface.")
+			return
+		}
+		value = reflect.ValueOf(obj)
+		return
 	case "Id":
 		obj, ok := x.(bson.ObjectId)
 		if !ok {
@@ -593,14 +601,6 @@ func (obj modelPasswordResets) ReflectByFieldName(fieldName string, x interface{
 		return
 	case "Complete":
 		obj, ok := x.(bool)
-		if !ok {
-			err = errors.New("Failed to typecast interface.")
-			return
-		}
-		value = reflect.ValueOf(obj)
-		return
-	case "Url":
-		obj, ok := x.(string)
 		if !ok {
 			err = errors.New("Failed to typecast interface.")
 			return

@@ -7,3 +7,5 @@ Describe the GoCore application elevator pitch purpose here.
 ```
 go get github.com/davidrenne/goCoreCreateAppGeneration && cd $GOPATH/src/github.com/davidrenne/goCoreCreateAppGeneration && bash bin/start_app
 ```
+
+### WARNING!  Please review all of these libraries and versions as this command will remove all these folders and replace with [these files](https://github.com/DanielRenne/GoCoreDep/tree/master/src "these files")  we have vetted as working with any GoCore application

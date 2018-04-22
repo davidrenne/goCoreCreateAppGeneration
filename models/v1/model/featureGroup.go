@@ -614,20 +614,6 @@ func (obj modelFeatureGroups) ReflectByFieldName(fieldName string, x interface{}
 func (obj modelFeatureGroups) ReflectBaseTypeByFieldName(fieldName string, x interface{}) (value reflect.Value, err error) {
 
 	switch fieldName {
-	case "AccountType":
-		if x == nil {
-			var obj string
-			value = reflect.ValueOf(obj)
-			return
-		}
-
-		obj, ok := x.(string)
-		if !ok {
-			err = errors.New("Failed to typecast interface.")
-			return
-		}
-		value = reflect.ValueOf(obj)
-		return
 	case "Id":
 		if x == nil {
 			var obj bson.ObjectId
@@ -643,6 +629,20 @@ func (obj modelFeatureGroups) ReflectBaseTypeByFieldName(fieldName string, x int
 		value = reflect.ValueOf(obj)
 		return
 	case "Name":
+		if x == nil {
+			var obj string
+			value = reflect.ValueOf(obj)
+			return
+		}
+
+		obj, ok := x.(string)
+		if !ok {
+			err = errors.New("Failed to typecast interface.")
+			return
+		}
+		value = reflect.ValueOf(obj)
+		return
+	case "AccountType":
 		if x == nil {
 			var obj string
 			value = reflect.ValueOf(obj)

@@ -614,6 +614,20 @@ func (obj modelPasswordResets) ReflectByFieldName(fieldName string, x interface{
 func (obj modelPasswordResets) ReflectBaseTypeByFieldName(fieldName string, x interface{}) (value reflect.Value, err error) {
 
 	switch fieldName {
+	case "Url":
+		if x == nil {
+			var obj string
+			value = reflect.ValueOf(obj)
+			return
+		}
+
+		obj, ok := x.(string)
+		if !ok {
+			err = errors.New("Failed to typecast interface.")
+			return
+		}
+		value = reflect.ValueOf(obj)
+		return
 	case "Id":
 		if x == nil {
 			var obj bson.ObjectId
@@ -650,20 +664,6 @@ func (obj modelPasswordResets) ReflectBaseTypeByFieldName(fieldName string, x in
 		}
 
 		obj, ok := x.(bool)
-		if !ok {
-			err = errors.New("Failed to typecast interface.")
-			return
-		}
-		value = reflect.ValueOf(obj)
-		return
-	case "Url":
-		if x == nil {
-			var obj string
-			value = reflect.ValueOf(obj)
-			return
-		}
-
-		obj, ok := x.(string)
 		if !ok {
 			err = errors.New("Failed to typecast interface.")
 			return

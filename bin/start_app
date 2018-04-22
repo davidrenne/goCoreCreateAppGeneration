@@ -54,7 +54,6 @@ if [ ! -d "$GOPATH/src/github.com/DanielRenne/GoCore/tools/appFiles/web" ]; then
    getCore
 fi
 
-set +e
 
 if [ ! -d "$GOPATH/src/github.com/davidrenne/goCoreCreateAppGeneration/web/app/node_modules" ]; then
     say "npm install starting"
@@ -72,6 +71,7 @@ if [ ! -f "$GOPATH/src/github.com/davidrenne/goCoreCreateAppGeneration/web/app/d
     say "copy dist tar balls ending"
 fi
 
+set +e
 
 echo "" > $GOPATH/src/github.com/davidrenne/goCoreCreateAppGeneration/log/app.log
 echo "" > $GOPATH/src/github.com/davidrenne/goCoreCreateAppGeneration/log/db.log

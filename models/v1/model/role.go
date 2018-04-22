@@ -589,6 +589,14 @@ func (obj *Role) ParseInterface(x interface{}) (err error) {
 func (obj modelRoles) ReflectByFieldName(fieldName string, x interface{}) (value reflect.Value, err error) {
 
 	switch fieldName {
+	case "Id":
+		obj, ok := x.(bson.ObjectId)
+		if !ok {
+			err = errors.New("Failed to typecast interface.")
+			return
+		}
+		value = reflect.ValueOf(obj)
+		return
 	case "Name":
 		obj, ok := x.(string)
 		if !ok {
@@ -629,14 +637,6 @@ func (obj modelRoles) ReflectByFieldName(fieldName string, x interface{}) (value
 		}
 		value = reflect.ValueOf(obj)
 		return
-	case "Id":
-		obj, ok := x.(bson.ObjectId)
-		if !ok {
-			err = errors.New("Failed to typecast interface.")
-			return
-		}
-		value = reflect.ValueOf(obj)
-		return
 	}
 	return
 }
@@ -644,6 +644,20 @@ func (obj modelRoles) ReflectByFieldName(fieldName string, x interface{}) (value
 func (obj modelRoles) ReflectBaseTypeByFieldName(fieldName string, x interface{}) (value reflect.Value, err error) {
 
 	switch fieldName {
+	case "ShortName":
+		if x == nil {
+			var obj string
+			value = reflect.ValueOf(obj)
+			return
+		}
+
+		obj, ok := x.(string)
+		if !ok {
+			err = errors.New("Failed to typecast interface.")
+			return
+		}
+		value = reflect.ValueOf(obj)
+		return
 	case "Id":
 		if x == nil {
 			var obj bson.ObjectId
@@ -701,20 +715,6 @@ func (obj modelRoles) ReflectBaseTypeByFieldName(fieldName string, x interface{}
 		value = reflect.ValueOf(obj)
 		return
 	case "AccountType":
-		if x == nil {
-			var obj string
-			value = reflect.ValueOf(obj)
-			return
-		}
-
-		obj, ok := x.(string)
-		if !ok {
-			err = errors.New("Failed to typecast interface.")
-			return
-		}
-		value = reflect.ValueOf(obj)
-		return
-	case "ShortName":
 		if x == nil {
 			var obj string
 			value = reflect.ValueOf(obj)

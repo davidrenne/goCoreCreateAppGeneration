@@ -579,14 +579,6 @@ func (obj *ServerSetting) ParseInterface(x interface{}) (err error) {
 func (obj modelServerSettings) ReflectByFieldName(fieldName string, x interface{}) (value reflect.Value, err error) {
 
 	switch fieldName {
-	case "Id":
-		obj, ok := x.(bson.ObjectId)
-		if !ok {
-			err = errors.New("Failed to typecast interface.")
-			return
-		}
-		value = reflect.ValueOf(obj)
-		return
 	case "Name":
 		obj, ok := x.(string)
 		if !ok {
@@ -621,6 +613,14 @@ func (obj modelServerSettings) ReflectByFieldName(fieldName string, x interface{
 		return
 	case "Any":
 		value = reflect.ValueOf(x)
+		return
+	case "Id":
+		obj, ok := x.(bson.ObjectId)
+		if !ok {
+			err = errors.New("Failed to typecast interface.")
+			return
+		}
+		value = reflect.ValueOf(obj)
 		return
 	}
 	return

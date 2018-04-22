@@ -14,6 +14,8 @@ fi
 npm version
 ret=$?
 if [[ "$ret" -eq 0 ]]; then
+    echo "npm install ok"
+else
     echo "You need to install npm"
     say "You need to install npm.  Exiting now"
     exit 1

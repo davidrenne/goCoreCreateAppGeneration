@@ -11,7 +11,7 @@ if [[ "$pth" == "" ]]; then
     exit 1
 fi
 
-npm version
+npm version > /dev/null  2>&1
 ret=$?
 if [[ "$ret" -eq 0 ]]; then
     echo "npm install ok"

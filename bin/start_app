@@ -4,6 +4,27 @@ if [ ! -f "$GOPATH/src/github.com/davidrenne/goCoreCreateAppGeneration/webConfig
     cd $GOPATH/src/github.com/davidrenne/goCoreCreateAppGeneration/bin
     chmod +x *
 fi
+pth=$GOPATH
+if [[ "$pth" == "" ]]; then
+    echo "You have no GOPATH environment variable.  Please install go and set it before running this app"
+    say "You have no GOPATH environment variable.  Please install go and set it before running this app.  Exiting now"
+    exit 1
+fi
+
+npm version
+ret=$?
+if [[ "$ret" -eq 0 ]]; then
+    echo "You need to install npm"
+    say "You need to install npm.  Exiting now"
+    exit 1
+fi
+
+envNode=$NODE_ENV
+if [[ "$envNode" == "" ]]; then
+    echo "Set NODE_ENV environment to development"
+    say "Set NODE_ENV environment to development.  Exiting now"
+    exit 1
+fi
 
 cd $GOPATH
 go run src/github.com/davidrenne/goCoreCreateAppGeneration/buildGoCoreCreateAppGeneration/buildGoCoreCreateAppGeneration.go
@@ -17,13 +38,21 @@ else
 fi
 bash $GOPATH/src/github.com/davidrenne/goCoreCreateAppGeneration/bin/kill_go_watch
 
+set -e
 if [ ! -d "$GOPATH/src/github.com/DanielRenne/GoCore" ]; then
     say "installing go core"
     go get github.com/DanielRenne/GoCore/... > /tmp/goCore1  2>&1
     go install github.com/DanielRenne/GoCore/getCore > /tmp/goCore2  2>&1
+    sleep 2
     getCore > /tmp/goCore3  2>&1
     go install github.com/DanielRenne/GoCore/core/goCoreCreateApp > /tmp/goCore4  2>&1
 fi
+
+if [ ! -d "$GOPATH/src/github.com/DanielRenne/GoCore/tools/appFiles/web" ]; then
+   getCore
+fi
+
+set +e
 
 if [ ! -d "$GOPATH/src/github.com/davidrenne/goCoreCreateAppGeneration/web/app/node_modules" ]; then
     say "npm install starting"
@@ -41,7 +70,7 @@ if [ ! -f "$GOPATH/src/github.com/davidrenne/goCoreCreateAppGeneration/web/app/d
     say "copy dist tar balls ending"
 fi
 
-
+
 echo "" > $GOPATH/src/github.com/davidrenne/goCoreCreateAppGeneration/log/app.log
 echo "" > $GOPATH/src/github.com/davidrenne/goCoreCreateAppGeneration/log/db.log
 echo "" > /tmp/go_watch.log
